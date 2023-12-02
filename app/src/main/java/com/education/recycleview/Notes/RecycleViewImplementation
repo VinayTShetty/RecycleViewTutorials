@@ -1,0 +1,6 @@
+Add RecycleView in the Activity.XML file.
+Create a list XML file for the Design.
+Create a Data class for the item to be filled in the List.
+Create a Adapter class that extends RecycleView.Adapter and implement method.
+   Hint:- In parallel provide a ItemViewHolder class in Generic for easy OverRiding automatically.
+Create a nested class i.e View holder for holding view items for Adapter

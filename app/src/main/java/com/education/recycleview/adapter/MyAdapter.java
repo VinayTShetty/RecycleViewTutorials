@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.education.recycleview.R;
 import com.education.recycleview.UserDetails;
 
+import java.util.ArrayList;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
-    private UserDetails[] userdata;
+    private ArrayList<UserDetails> userdata;
 
-     public MyAdapter(UserDetails[] userdata){
-        this.userdata=userdata;
+    public MyAdapter(ArrayList<UserDetails> userdata) {
+        this.userdata = userdata;
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-            final UserDetails userDetails= userdata[position];
+            final UserDetails userDetails= userdata.get(position);
             holder.userTextView.setText(userDetails.getUserName());
             holder.userImageView.setImageDrawable(userDetails.getUserpic());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
     @Override
     public int getItemCount() {
-        return userdata.length;
+        return userdata.size();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder{

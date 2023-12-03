@@ -1,6 +1,48 @@
 Add RecycleView in the Activity.XML file.
 Create a list XML file for the Design.
 Create a Data class for the item to be filled in the List.
-Create a Adapter class that extends RecycleView.Adapter and implement method.
-   Hint:- In parallel provide a ItemViewHolder class in Generic for easy OverRiding automatically.
-Create a nested class i.e View holder for holding view items for Adapter
+
+
+
+Create a Adapter class that extends RecycleView.Adapter
+Create a inner class for ItemViewholder that Extends RecycleView.ViewHolder
+Use Generic for  RecycleView.Adapter i.e <MyAdaper.ItemViewHolder>
+Implement methods for Adapter
+Add Constructor for ItemViewHolder.
+
+
+OnCreateView Holder Method:-
+Add Layout Inflater Code
+Inflate Layout
+Create ItemViewHolder Object and Pass the View.
+Return the ItemViewHolder.
+
+
+Prepare RecycleView.
+Intialize RecycleView.
+Prepare the Data.
+Intialize the adapter
+Set layout Manager for RecycleView
+Set adapter for RecycleView.
+
+
+
+Methods Explaniation:-
+
+onCreateViewHolder:
+*******************
+This method is called when the RecyclerView needs a new ViewHolder instance.
+It inflates the layout for a single item in the RecyclerView. The inflated layout will be used to create instances of the ViewHolder.
+
+It is responsible for creating the initial structure of the ViewHolder,
+setting up the UI elements, and returning an instance of the ViewHolder.
+
+This method is called only a few times, typically when there are not enough ViewHolders to represent the visible items on the screen
+
+onBindViewHolder:
+*****************
+
+This method is called to bind the data to a ViewHolder at a specific position.
+It updates the contents of the ViewHolder to reflect the item at the given position in the data set.
+This method is called frequently as the user scrolls through the list,
+and it's crucial for efficiently updating the UI with the correct data

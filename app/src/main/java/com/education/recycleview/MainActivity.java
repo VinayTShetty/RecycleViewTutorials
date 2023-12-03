@@ -8,11 +8,13 @@ import android.os.Bundle;
 
 import com.education.recycleview.adapter.MyAdapter;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MyAdapter myAdapter;
-    UserDetails[] UserDetails;
+    ArrayList<UserDetails> userDetailsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
          *   2)Set layuout manager for RecycleView.
          *   3)Set adapter for RecycleView.
          */
-        myAdapter=new MyAdapter(UserDetails);
+        myAdapter=new MyAdapter(userDetailsList);
         /**
          * This below logic can be removed by adding the layout manager directly in the XML file for the RecycleView i.e
          * app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -42,21 +44,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
     }
 
-        private void loadData(){
-            UserDetails = new UserDetails[] {
-                    new UserDetails("Email", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Info", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Delete", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Dialer", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Alert", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Map", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Email", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Info", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Delete", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Dialer", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Alert", getDrawable(R.drawable.baseline_person_3_24)),
-                    new UserDetails("Map", getDrawable(R.drawable.baseline_person_3_24)),
-            };
-        }
+    private void loadData() {
+        userDetailsList = new ArrayList<>();
+        userDetailsList.add(new UserDetails("Email", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Info", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Delete", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Dialer", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Alert", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Map", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Email", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Info", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Delete", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Dialer", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Alert", getDrawable(R.drawable.baseline_person_3_24)));
+        userDetailsList.add(new UserDetails("Map", getDrawable(R.drawable.baseline_person_3_24)));
+    }
 
 }

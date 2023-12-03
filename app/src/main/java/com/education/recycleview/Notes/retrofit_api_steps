@@ -1,0 +1,15 @@
+
+
+Add Retrofit Depedency in the Module build.app gradle File.
+    Refer this link for More info:-https://github.com/square/retrofit
+
+Create an interfce for API Service.
+
+Add Glide Depedency for Image Loader.
+
+Use Retrofit API instance to create Retrofit
+
+Use call.enque to get the response body of the JSON
+
+
+

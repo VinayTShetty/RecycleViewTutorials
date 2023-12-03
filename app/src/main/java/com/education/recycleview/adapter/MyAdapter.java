@@ -10,17 +10,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.education.model.ProductDetails;
 import com.education.recycleview.R;
-import com.education.recycleview.UserDetails;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
-    private ArrayList<UserDetails> userdata;
+    private List<ProductDetails> productDetails;
 
-    public MyAdapter(ArrayList<UserDetails> userdata) {
-        this.userdata = userdata;
+    public MyAdapter(List<ProductDetails> productDetails) {
+        this.productDetails = productDetails;
     }
 
     @NonNull
@@ -34,20 +36,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-            final UserDetails userDetails= userdata.get(position);
-            holder.userTextView.setText(userDetails.getUserName());
-            holder.userImageView.setImageDrawable(userDetails.getUserpic());
+            final ProductDetails productDetails= this.productDetails.get(position);
+            holder.bindItem(productDetails);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"click on item: "+userDetails.getUserName(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(view.getContext(),"click on item: "+productDetails.getTitle(),Toast.LENGTH_LONG).show();
                 }
             });
     }
 
     @Override
     public int getItemCount() {
-        return userdata.size();
+        return productDetails.size();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder{
@@ -55,8 +56,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
         public TextView userTextView;
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            userImageView=(ImageView) itemView.findViewById(R.id.imageView_iv);
-            userTextView=(TextView) itemView.findViewById(R.id.headerTextView_tv);
+            userImageView=(ImageView) itemView.findViewById(R.id.coverImage);
+            userTextView=(TextView) itemView.findViewById(R.id.title);
+
+        }
+
+        void bindItem(ProductDetails productDetails){
+            userTextView.setText(productDetails.getTitle());
+            Glide.with(itemView.getContext())
+                    .load(productDetails.geturl())
+                    .placeholder(R.drawable.baseline_person_3_24) // Add a placeholder image
+                    .error(R.drawable.baseline_person_3_24) // Add an error image
+                    .into(userImageView);
+
         }
     }
 }
